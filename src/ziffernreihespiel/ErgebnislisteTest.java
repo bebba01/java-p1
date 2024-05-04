@@ -6,12 +6,10 @@ public class ErgebnislisteTest {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean weiterSpielen = true;
-
         Ergebnisliste ergebnisliste = new Ergebnisliste(); // Ergebnisliste erstellen
         int round = 1; // Initialize the round number
 
-        while (weiterSpielen) {
+        while (true) {
             // Begrüßung und Eingabe des Spielernamens
             System.out.println("Willkommen zum Ziffernreihenspiel!");
             System.out.print("Bitte geben Sie Ihren Namen ein: ");
@@ -26,6 +24,18 @@ public class ErgebnislisteTest {
             System.out.println("Die generierte Ziffernreihe lautet:");
             sequence.printZiffernreihe();
 
+            // Clear console after 1 second
+            try {
+                Thread.sleep(1000);
+                String os = System.getProperty("os.name").toLowerCase();
+                if (os.contains("windows")) {
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                } else {
+                    new ProcessBuilder("clear").inheritIO().start().waitFor();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
             // Spieler auffordern, die Ziffernreihe zu vervollständigen
             System.out.println("Bitte vervollständigen Sie die Ziffernreihe:");
             long startTime = System.currentTimeMillis(); // Startzeit messen
@@ -54,10 +64,10 @@ public class ErgebnislisteTest {
             // Abfrage, ob der Spieler weiter spielen möchte
             System.out.print("\nMöchten Sie ein weiteres Spiel spielen? (ja/nein): ");
             String antwort = scanner.next();
-            weiterSpielen = antwort.equalsIgnoreCase("ja");
-
-            // Leeren des Scanners
-            scanner.nextLine();
+            if (!antwort.equalsIgnoreCase("ja")) {
+                break;
+            }
+            scanner.nextLine(); // Leeren des Scanners
         }
 
         scanner.close();
