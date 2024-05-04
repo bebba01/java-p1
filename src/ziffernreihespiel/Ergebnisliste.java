@@ -3,13 +3,30 @@ package ziffernreihespiel;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Diese Klasse repräsentiert eine Ergebnisliste für das Ziffernreihenspiel.
+ * Sie ermöglicht das Hinzufügen von Spielergebnissen sowie das Spielen mehrerer
+ * Runden des Spiels.
+ */
 public class Ergebnisliste {
-    private Ergebnis erstesErgebnis;
+    private Ergebnis erstesErgebnis; // Erstes Ergebnis in der Liste
 
+    /**
+     * Konstruktor für eine leere Ergebnisliste.
+     */
     public Ergebnisliste() {
         this.erstesErgebnis = null;
     }
 
+    /**
+     * Fügt ein neues Ergebnis zur Ergebnisliste hinzu.
+     * 
+     * @param name         Der Name des Spielers.
+     * @param spielzeit    Die Spielzeit in Sekunden.
+     * @param reihenlaenge Die Länge der Ziffernreihe.
+     * @param roundWon     Gibt an, ob der Spieler die Runde gewonnen hat oder
+     *                     nicht.
+     */
     public void addErgebnis(String name, double spielzeit, int reihenlaenge, boolean roundWon) {
         Ergebnis neuesErgebnis = new ErgebnisImpl(name, spielzeit, reihenlaenge, roundWon);
         if (erstesErgebnis == null) {
@@ -23,6 +40,9 @@ public class Ergebnisliste {
         }
     }
 
+    /**
+     * Startet das Ziffernreihenspiel und führt mehrere Runden durch.
+     */
     public void playGame() {
         Scanner scanner = new Scanner(System.in);
         boolean weiterSpielen = true;
@@ -46,7 +66,12 @@ public class Ergebnisliste {
             // Clear console after 1 second
             try {
                 Thread.sleep(1000);
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                String os = System.getProperty("os.name").toLowerCase();
+                if (os.contains("windows")) {
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                } else {
+                    new ProcessBuilder("clear").inheritIO().start().waitFor();
+                }
             } catch (InterruptedException | IOException e) {
                 System.out.println("Error clearing console: " + e.getMessage());
             }
@@ -79,6 +104,12 @@ public class Ergebnisliste {
         scanner.close();
     }
 
+    /**
+     * Generiert eine Ziffernreihe mit der angegebenen Länge.
+     * 
+     * @param length Die Länge der Ziffernreihe.
+     * @return Die generierte Ziffernreihe.
+     */
     private Ziffernreihe generateZiffernreihe(int length) {
         Ziffernreihe sequence = new Ziffernreihe();
         for (int i = 0; i < length; i++) {
@@ -87,6 +118,13 @@ public class Ergebnisliste {
         return sequence;
     }
 
+    /**
+     * Überprüft, ob die vom Benutzer eingegebene Sequenz korrekt ist.
+     * 
+     * @param sequence Die generierte Ziffernreihe.
+     * @param scanner  Der Scanner zum Einlesen der Benutzereingabe.
+     * @return true, wenn die Sequenz korrekt ist, andernfalls false.
+     */
     private boolean isSequenceCompleted(Ziffernreihe sequence, Scanner scanner) {
         Ziffernreihe.Node current = sequence.getKopf();
         while (current != null) {
@@ -101,10 +139,19 @@ public class Ergebnisliste {
         return true;
     }
 
+    /**
+     * Gibt die gespeicherten Ergebnisse der Ergebnisliste aus.
+     */
     public void printErgebnisliste() {
         printErgebnislisteReversed(erstesErgebnis);
     }
 
+    /**
+     * Hilfsmethode zur rekursiven Ausgabe der Ergebnisliste in umgekehrter
+     * Reihenfolge.
+     * 
+     * @param current Das aktuelle Ergebnis, beginnend mit dem letzten.
+     */
     private void printErgebnislisteReversed(Ergebnis current) {
         if (current != null) {
             printErgebnislisteReversed(current.getNext());
@@ -112,6 +159,9 @@ public class Ergebnisliste {
         }
     }
 
+    /**
+     * Eine interne Implementierungsklasse für ein Ergebnis eines Spieldurchgangs.
+     */
     private class ErgebnisImpl implements Ergebnis {
         private String name;
         private double spielzeit;
