@@ -21,8 +21,8 @@ public class Ergebnisliste {
      * @param spielzeit    Die Spielzeit in Sekunden.
      * @param reihenlaenge Die Länge der Ziffernreihe.
      */
-    public void addErgebnis(String name, double spielzeit, int reihenlaenge) {
-        Ergebnis neuesErgebnis = new ErgebnisImpl(name, spielzeit, reihenlaenge);
+    public void addErgebnis(String name, double spielzeit, int reihenlaenge, boolean roundWon) {
+        Ergebnis neuesErgebnis = new ErgebnisImpl(name, spielzeit, reihenlaenge, roundWon);
         if (erstesErgebnis == null) {
             erstesErgebnis = neuesErgebnis;
         } else {
@@ -53,11 +53,13 @@ public class Ergebnisliste {
         private double spielzeit;
         private int laenge;
         private Ergebnis next;
+        private boolean roundWon;
 
-        public ErgebnisImpl(String name, double spielzeit, int laenge) {
+        public ErgebnisImpl(String name, double spielzeit, int laenge, boolean roundWon) {
             this.name = name;
             this.spielzeit = spielzeit;
             this.laenge = laenge;
+            this.roundWon = roundWon;
         }
 
         @Override
