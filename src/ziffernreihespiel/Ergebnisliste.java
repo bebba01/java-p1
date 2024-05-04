@@ -60,21 +60,23 @@ public class Ergebnisliste {
             System.out.println("Die generierte Ziffernreihe lautet:");
             sequence.printZiffernreihe();
 
-            System.out.println("Bitte vervollständigen Sie die Ziffernreihe:");
             long startTime = System.currentTimeMillis(); // Startzeit messen
 
             // Clear console after 1 second
             try {
                 Thread.sleep(1000);
-                String os = System.getProperty("os.name").toLowerCase();
-                if (os.contains("windows")) {
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                } else {
-                    new ProcessBuilder("clear").inheritIO().start().waitFor();
-                }
-            } catch (InterruptedException | IOException e) {
-                System.out.println("Error clearing console: " + e.getMessage());
+
+                System.out.print("\033[1A\033[K"); // Move cursor up one line and clear the
+                // String os = System.getProperty("os.name").toLowerCase();
+                // if (os.contains("windows")) {
+                // new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                // } else {
+                // new ProcessBuilder("clear").inheritIO().start().waitFor();
+                // }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
+            System.out.println("Bitte vervollständigen Sie die Ziffernreihe:");
 
             boolean roundWon = isSequenceCompleted(sequence, scanner);
             long endTime = System.currentTimeMillis(); // Endzeit messen
@@ -183,7 +185,8 @@ public class Ergebnisliste {
 
         @Override
         public String toString() {
-            String result = name + ": Spielzeit - " + spielzeit + " Sekunden, Länge der Ziffernreihe - " + laenge
+            String result = "Spiel: " + name + ": Spielzeit - " + spielzeit + " Sekunden, Länge der Ziffernreihe - "
+                    + laenge
                     + ", Gewonnen - " + (roundWon ? "Ja" : "Nein");
             return result;
         }
