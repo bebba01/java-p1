@@ -52,6 +52,7 @@ public class Ergebnisliste {
         private String name;
         private double spielzeit;
         private int laenge;
+        private Ergebnis next;
 
         public ErgebnisImpl(String name, double spielzeit, int laenge) {
             this.name = name;
@@ -91,14 +92,12 @@ public class Ergebnisliste {
 
         @Override
         public Ergebnis getNext() {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'getNext'");
+            return next;
         }
 
         @Override
         public void setNext(Ergebnis neuesErgebnis) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'setNext'");
+            this.next = neuesErgebnis;
         }
     }
 }
