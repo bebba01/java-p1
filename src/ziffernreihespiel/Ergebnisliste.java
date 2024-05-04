@@ -1,6 +1,5 @@
 package ziffernreihespiel;
 
-// import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -65,14 +64,21 @@ public class Ergebnisliste {
             // Clear console after 1 second
             try {
                 Thread.sleep(1000);
+            
+                String os = System.getProperty("os.name").toLowerCase();
+                
 
-                System.out.print("\033[1A\033[K"); // Move cursor up one line and clear the
-                // String os = System.getProperty("os.name").toLowerCase();
-                // if (os.contains("windows")) {
-                // new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                // } else {
-                // new ProcessBuilder("clear").inheritIO().start().waitFor();
-                // }
+                if (os.contains("windows")) {
+
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                } else {
+
+                    new ProcessBuilder("clear").inheritIO().start().waitFor();
+                }
+                for (int i = 0; i < 100; i++) {
+                    System.out.println(); // Print empty lines to clear the console
+
+                }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
