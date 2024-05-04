@@ -7,13 +7,13 @@ public class ErgebnislisteTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean weiterSpielen = true;
-        int roundNumber = 1;
 
         Ergebnisliste ergebnisliste = new Ergebnisliste(); // Ergebnisliste erstellen
+        int round = 1; // Initialize the round number
 
         while (weiterSpielen) {
             // Begrüßung und Eingabe des Spielernamens
-            System.out.println("Willkommen zum Ziffernreihenspiel! (Runde " + roundNumber + ")");
+            System.out.println("Willkommen zum Ziffernreihenspiel!");
             System.out.print("Bitte geben Sie Ihren Namen ein: ");
             String playerName = scanner.nextLine();
 
@@ -33,6 +33,7 @@ public class ErgebnislisteTest {
             long endTime = System.currentTimeMillis(); // Endzeit messen
             double elapsedTime = (endTime - startTime) / 1000.0; // Umrechnen in Sekunden
 
+            // Anzeigen des Ergebnisses des aktuellen Durchgangs
             if (roundWon) {
                 System.out.println("Herzlichen Glückwunsch! Sie haben die Ziffernreihe richtig vervollständigt.");
             } else {
@@ -45,8 +46,10 @@ public class ErgebnislisteTest {
             System.out.println("Das Ergebnis wurde zur Ergebnisliste hinzugefügt.");
 
             // Anzeigen der aktualisierten Ergebnisliste
-            System.out.println("\nAktualisierte Ergebnisliste:");
+            System.out.println("\nAktualisierte Ergebnisliste nach Runde " + round + ":");
             ergebnisliste.printErgebnisliste();
+
+            round++; // Increment the round number
 
             // Abfrage, ob der Spieler weiter spielen möchte
             System.out.print("\nMöchten Sie ein weiteres Spiel spielen? (ja/nein): ");
@@ -55,9 +58,6 @@ public class ErgebnislisteTest {
 
             // Leeren des Scanners
             scanner.nextLine();
-
-            // Inkrementieren der Rundennummer
-            roundNumber++;
         }
 
         scanner.close();

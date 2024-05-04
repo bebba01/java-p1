@@ -68,6 +68,13 @@ public class Ergebnisliste {
         }
 
         @Override
+        public String toString() {
+            String result = name + ": Spielzeit - " + spielzeit + " Sekunden, Länge der Ziffernreihe - " + laenge
+                    + ", Gewonnen - " + (roundWon ? "Ja" : "Nein");
+            return result;
+        }
+
+        @Override
         public void setNamedesSpielers(String name) {
             this.name = name;
         }
