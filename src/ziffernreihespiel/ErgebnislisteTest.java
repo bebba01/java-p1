@@ -6,36 +6,47 @@ public class ErgebnislisteTest {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        boolean weiterSpielen = true;
 
-        // Begrüßung und Eingabe des Spielernamens
-        System.out.println("Willkommen zum Ziffernreihenspiel!");
-        System.out.print("Bitte geben Sie Ihren Namen ein: ");
-        String playerName = scanner.nextLine();
+        while (weiterSpielen) {
+            // Begrüßung und Eingabe des Spielernamens
+            System.out.println("Willkommen zum Ziffernreihenspiel!");
+            System.out.print("Bitte geben Sie Ihren Namen ein: ");
+            String playerName = scanner.nextLine();
 
-        // Eingabe der Länge der Ziffernreihe
-        System.out.print("Bitte geben Sie die Länge der Ziffernreihe ein: ");
-        int sequenceLength = scanner.nextInt();
+            // Eingabe der Länge der Ziffernreihe
+            System.out.print("Bitte geben Sie die Länge der Ziffernreihe ein: ");
+            int sequenceLength = scanner.nextInt();
 
-        // Erzeugen einer Ziffernreihe und Anzeigen
-        Ziffernreihe sequence = generateZiffernreihe(sequenceLength);
-        System.out.println("Die generierte Ziffernreihe lautet:");
-        sequence.printZiffernreihe();
+            // Erzeugen einer Ziffernreihe und Anzeigen
+            Ziffernreihe sequence = generateZiffernreihe(sequenceLength);
+            System.out.println("Die generierte Ziffernreihe lautet:");
+            sequence.printZiffernreihe();
 
-        // Spieler auffordern, die Ziffernreihe zu vervollständigen
-        System.out.println("Bitte vervollständigen Sie die Ziffernreihe:");
-        long startTime = System.currentTimeMillis(); // Startzeit messen
-        if (isSequenceCompleted(sequence, scanner)) {
-            long endTime = System.currentTimeMillis(); // Endzeit messen
-            double elapsedTime = (endTime - startTime) / 1000.0; // Umrechnen in Sekunden
-            System.out.println("Herzlichen Glückwunsch! Sie haben die Ziffernreihe richtig vervollständigt.");
-            System.out.println("Ihre Spielzeit beträgt: " + elapsedTime + " Sekunden.");
+            // Spieler auffordern, die Ziffernreihe zu vervollständigen
+            System.out.println("Bitte vervollständigen Sie die Ziffernreihe:");
+            long startTime = System.currentTimeMillis(); // Startzeit messen
+            if (isSequenceCompleted(sequence, scanner)) {
+                long endTime = System.currentTimeMillis(); // Endzeit messen
+                double elapsedTime = (endTime - startTime) / 1000.0; // Umrechnen in Sekunden
+                System.out.println("Herzlichen Glückwunsch! Sie haben die Ziffernreihe richtig vervollständigt.");
+                System.out.println("Ihre Spielzeit beträgt: " + elapsedTime + " Sekunden.");
 
-            // Hinzufügen des Ergebnisses zur Ergebnisliste
-            Ergebnisliste ergebnisliste = new Ergebnisliste();
-            ergebnisliste.addErgebnis(playerName, elapsedTime, sequenceLength);
-            System.out.println("Das Ergebnis wurde zur Ergebnisliste hinzugefügt.");
-        } else {
-            System.out.println("Leider haben Sie die Ziffernreihe falsch vervollständigt.");
+                // Hinzufügen des Ergebnisses zur Ergebnisliste
+                Ergebnisliste ergebnisliste = new Ergebnisliste();
+                ergebnisliste.addErgebnis(playerName, elapsedTime, sequenceLength);
+                System.out.println("Das Ergebnis wurde zur Ergebnisliste hinzugefügt.");
+            } else {
+                System.out.println("Leider haben Sie die Ziffernreihe falsch vervollständigt.");
+            }
+
+            // Abfrage, ob der Spieler weiter spielen möchte
+            System.out.print("Möchten Sie ein weiteres Spiel spielen? (ja/nein): ");
+            String antwort = scanner.next();
+            weiterSpielen = antwort.equalsIgnoreCase("ja");
+
+            // Leeren des Scanners
+            scanner.nextLine();
         }
 
         scanner.close();
