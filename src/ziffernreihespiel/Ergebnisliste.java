@@ -64,9 +64,8 @@ public class Ergebnisliste {
             // Clear console after 1 second
             try {
                 Thread.sleep(1000);
-            
+
                 String os = System.getProperty("os.name").toLowerCase();
-                
 
                 if (os.contains("windows")) {
 
@@ -191,7 +190,7 @@ public class Ergebnisliste {
 
         @Override
         public String toString() {
-            String result = "Spiel: " + name + ": Spielzeit - " + spielzeit + " Sekunden, Länge der Ziffernreihe - "
+            String result = "Spieler: " + name + ": Spielzeit - " + spielzeit + " Sekunden, Länge der Ziffernreihe - "
                     + laenge
                     + ", Gewonnen - " + (roundWon ? "Ja" : "Nein");
             return result;
