@@ -16,8 +16,17 @@ public class Ziffernreihe {
     }
 
     /**
+     * Gibt den Anfang der Sequenz zurück.
+     *
+     * @return Der Anfang der Sequenz.
+     */
+    public Node getKopf() {
+        return kopf;
+    }
+
+    /**
      * Fügt eine Ziffer am Ende der Sequenz hinzu.
-     * 
+     *
      * @param data Die Ziffer, die hinzugefügt werden soll.
      */
     public void append(int data) {
@@ -44,17 +53,14 @@ public class Ziffernreihe {
         System.out.println();
     }
 
-    /**
-     * Diese Klasse repräsentiert einen Knoten in der Sequenz.
-     * Jeder Knoten enthält eine Ziffer und einen Verweis auf den nächsten Knoten.
-     */
-    private class Node {
+    // Innere Klasse Node mit öffentlicher Sichtbarkeit
+    public class Node {
         private int data; // Die Ziffer
         private Node next; // Verweis auf den nächsten Knoten
 
         /**
          * Konstruiert einen Knoten mit der gegebenen Ziffer.
-         * 
+         *
          * @param data Die Ziffer, die im Knoten gespeichert werden soll.
          */
         public Node(int data) {
@@ -64,7 +70,7 @@ public class Ziffernreihe {
 
         /**
          * Gibt die im Knoten gespeicherte Ziffer zurück.
-         * 
+         *
          * @return Die im Knoten gespeicherte Ziffer.
          */
         public int getData() {
@@ -73,7 +79,7 @@ public class Ziffernreihe {
 
         /**
          * Gibt den Verweis auf den nächsten Knoten zurück.
-         * 
+         *
          * @return Der Verweis auf den nächsten Knoten.
          */
         public Node getNext() {
@@ -82,7 +88,7 @@ public class Ziffernreihe {
 
         /**
          * Setzt den Verweis auf den nächsten Knoten.
-         * 
+         *
          * @param next Der Verweis auf den nächsten Knoten.
          */
         public void setNext(Node next) {
