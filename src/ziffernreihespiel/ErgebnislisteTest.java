@@ -27,12 +27,13 @@ public class ErgebnislisteTest {
             // Clear console after 1 second
             try {
                 Thread.sleep(1000);
-                String os = System.getProperty("os.name").toLowerCase();
-                if (os.contains("windows")) {
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                } else {
-                    new ProcessBuilder("clear").inheritIO().start().waitFor();
-                }
+                System.out.print("\033[1A\033[K");
+                // String os = System.getProperty("os.name").toLowerCase();
+                // if (os.contains("windows")) {
+                // new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                // } else {
+                // new ProcessBuilder("clear").inheritIO().start().waitFor();
+                // }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
