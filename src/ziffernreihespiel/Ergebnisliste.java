@@ -37,11 +37,22 @@ public class Ergebnisliste {
     /**
      * Gibt die gespeicherten Ergebnisse der Ergebnisliste aus.
      */
+
     public void printErgebnisliste() {
-        Ergebnis aktuellesErgebnis = erstesErgebnis;
-        while (aktuellesErgebnis != null) {
-            System.out.println(aktuellesErgebnis.toString());
-            aktuellesErgebnis = aktuellesErgebnis.getNext();
+        printErgebnislisteReversed(erstesErgebnis);
+    }
+
+    /**
+     * Hilfsmethode zur rekursiven Ausgabe der Ergebnisliste in umgekehrter
+     * Reihenfolge.
+     * 
+     * @param current Das aktuelle Ergebnis, beginnend mit dem letzten.
+     */
+
+    private void printErgebnislisteReversed(Ergebnis current) {
+        if (current != null) {
+            printErgebnislisteReversed(current.getNext());
+            System.out.println(current.toString());
         }
     }
 
