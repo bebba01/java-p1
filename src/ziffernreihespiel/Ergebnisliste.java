@@ -84,6 +84,7 @@ public class Ergebnisliste {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+
             System.out.println("Bitte vervollständigen Sie die Ziffernreihe:");
 
             boolean roundWon = isSequenceCompleted(sequence, scanner);

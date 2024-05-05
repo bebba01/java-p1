@@ -18,7 +18,6 @@ public class ZiffernreiheTest {
         ziffernreihe.append(3);
         ziffernreihe.append(4);
         ziffernreihe.append(5);
-
         // Ausgabe der Ziffernreihe
         System.out.println("Ziffernreihe:");
         ziffernreihe.printZiffernreihe();
