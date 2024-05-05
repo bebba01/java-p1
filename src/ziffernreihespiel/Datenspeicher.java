@@ -11,6 +11,7 @@ public interface Datenspeicher {
      * 
      * Speichert eine Ergebnisliste in einer Datei.
      * 
+     * 
      * @param ergebnisliste Die Liste der Ergebnisse.
      * @param dateiname     Der Dateiname.
      */
