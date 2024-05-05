@@ -4,6 +4,9 @@ package ziffernreihespiel;
  * Diese Klasse repräsentiert eine Sequenz von Ziffern.
  * Sie stellt Methoden zum Hinzufügen von Ziffern zur Sequenz und zum Ausgeben
  * der Sequenz bereit.
+ * 
+ * @author Mohamed Bebba
+ * @see https://github.com/bebba01/java-p1
  */
 public class Ziffernreihe {
     private Node kopf; // Der Anfang der Sequenz

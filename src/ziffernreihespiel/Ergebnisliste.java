@@ -6,6 +6,9 @@ import java.util.Scanner;
  * Diese Klasse repräsentiert eine Ergebnisliste für das Ziffernreihenspiel.
  * Sie ermöglicht das Hinzufügen von Spielergebnissen sowie das Spielen mehrerer
  * Runden des Spiels.
+ * 
+ * @author Mohamed Bebba
+ * @see https://github.com/bebba01/java-p1
  */
 public class Ergebnisliste {
     private Ergebnis erstesErgebnis; // Erstes Ergebnis in der Liste
