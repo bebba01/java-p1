@@ -7,6 +7,8 @@ package ziffernreihespiel;
  * dass die Funktionalität der Ziffernreihe-Klasse ordnungsgemäß funktioniert.
  * 
  * @author Mohamed Bebba
+ * 
+ * 
  * @see https://github.com/bebba01/java-p1
  */
 public class ZiffernreiheTest {
